@@ -9,8 +9,14 @@ import { createStore } from 'redux';
 
 // 3. new store needs a reducer thats being passed in
 function reducer(state, action) {
+  if (action.type === 'changeState') {
+    return action.payload.newState;
+  }
   return 'State';
 }
+
+// 2. set new store to store
+const store = createStore(reducer);
 
 // 4. create an action and dispatching action
 const action = {
@@ -21,8 +27,7 @@ const action = {
 };
 store.dispatch(action);
 
-// 2. set new store to store
-const store = createStore(reducer);
+console.log(store.getState());
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
