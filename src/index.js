@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+
+// imported reducers
 import productsReducer from './reducers/products-reducer';
 import userReducer from './reducers/user-reducer';
 
