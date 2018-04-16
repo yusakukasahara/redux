@@ -30,5 +30,6 @@ const mapStateToProps = state => {
 }
 //
 
-// connecting app to redux store
+// connecting app to redux store, connect takes in three arguments
+  //mapStateToProps - recieves the state of the store, allowing which props to provide for the component
 export default connect(mapStateToProps)(App);
