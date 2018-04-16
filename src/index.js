@@ -6,7 +6,11 @@ import registerServiceWorker from './registerServiceWorker';
 
 import { createStore } from 'redux';
 
-const store = createStore();
+function reducer() {
+  return 'State';
+}
+
+const store = createStore(reducer);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
