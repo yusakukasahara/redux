@@ -8,12 +8,17 @@ import registerServiceWorker from './registerServiceWorker';
 import { combineReducers, createStore } from 'redux';
 
 // products reducer with initial state of []
-function productsReducer(state = [], action) {
+function productsReducer(state = [], { type, payload }) {
   return state;
 }
 
 // user reducer with initial state ''
-function userReducer(state = '', action) {
+function userReducer(state = '', { type, payload }) {
+  // switch statements are standard practice
+  switch (type) {
+    case 'updateUser':
+      return payload;
+  }
   return state;
 }
 
@@ -30,11 +35,23 @@ const store = createStore(
   products: [{ name: 'iPhone' }],
   user: 'Yusaku'
   },
+  // checks for redux devtools extension and calls if so
   window.devToolsExtension && window.devToolsExtension()
 );
 
 // logs current state of store
 console.log(store.getState());
+
+// action that updates user
+const updateUserAction = {
+  type: 'updateUser',
+  payload: {
+    user: 'Doremon'
+  }
+}
+
+// dispatch user change
+// store.dispatch(updateUserAction);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
