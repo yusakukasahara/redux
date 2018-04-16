@@ -7,6 +7,9 @@ import registerServiceWorker from './registerServiceWorker';
 // import createStore and combineReducers from redux
 import { combineReducers, createStore } from 'redux';
 
+// import Provider to give app access to the store
+import { Provider } from 'react-redux';
+
 // products reducer with initial state of []
 function productsReducer(state = [], { type, payload }) {
   return state;
@@ -53,5 +56,6 @@ const updateUserAction = {
 // dispatch user change
 // store.dispatch(updateUserAction);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// wrap App component with Provider
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
