@@ -3,27 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import productsReducer from './reducers/products-reducer';
+import userReducer from './reducers/user-reducer';
 
 // import createStore and combineReducers from redux
 import { combineReducers, createStore } from 'redux';
 
 // import Provider to give app access to the store
 import { Provider } from 'react-redux';
-
-// products reducer with initial state of []
-function productsReducer(state = [], { type, payload }) {
-  return state;
-}
-
-// user reducer with initial state ''
-function userReducer(state = '', { type, payload }) {
-  // switch statements are standard practice
-  switch (type) {
-    case 'updateUser':
-      return payload;
-  }
-  return state;
-}
 
 // combining products and user reducers to a single reducer object
 const allReducers = combineReducers({
