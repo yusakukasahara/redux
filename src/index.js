@@ -23,11 +23,15 @@ const allReducers = combineReducers({
   user: userReducer
 });
 
-// instantiate a new store with default product iphone and user Yusaku
-const store = createStore(allReducers, {
+// instantiate a new store with all reducers, default product iphone and user Yusaku, and devTools extension check/call
+const store = createStore(
+  allReducers, 
+  {
   products: [{ name: 'iPhone' }],
   user: 'Yusaku'
-});
+  },
+  window.devTwoolsExtension && window.devToolsExtension()
+);
 
 // logs current state of store
 console.log(store.getState());
