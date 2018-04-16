@@ -35,12 +35,12 @@ const store = createStore(
 console.log(store.getState());
 
 // action that updates user
-const updateUserAction = {
-  type: 'updateUser',
-  payload: {
-    user: 'Doremon'
-  }
-}
+// const updateUserAction = {
+//   type: 'updateUser',
+//   payload: {
+//     user: 'Doremon'
+//   }
+// }
 
 // dispatch user change
 // store.dispatch(updateUserAction);
