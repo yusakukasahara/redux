@@ -30,7 +30,7 @@ const store = createStore(
   products: [{ name: 'iPhone' }],
   user: 'Yusaku'
   },
-  window.devTwoolsExtension && window.devToolsExtension()
+  window.devToolsExtension && window.devToolsExtension()
 );
 
 // logs current state of store
