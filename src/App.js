@@ -55,7 +55,13 @@ const mapActionsToProps = (dispatch, props) => {
   )
 };
 
+const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
+  console.log('propsFromState', propsFromState, 'propsFromDispatch', propsFromDispatch, 'ownProps', ownProps) 
+  return {};
+}
+
 // connecting app to redux store, connect takes in three arguments
   // mapStateToProps - recieves the state of the store, allowing which props to provide for the component
   // mapActionsToProps - dispatch actions from components, keeping from having to dispatch from components themselves, instead just call functions to dispatch actions to the store
-export default connect(mapStateToProps, mapActionsToProps)(App);
+  // mergeProps
+export default connect(mapStateToProps, mapActionsToProps, mergeProps)(App);
