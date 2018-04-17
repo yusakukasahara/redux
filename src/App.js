@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 // import connect from react-redux to app to redux store
@@ -13,26 +12,32 @@ class App extends Component {
     this.onUpdateUser = this.onUpdateUser.bind(this);
   }
 
-  onUpdateUser() {
-    this.props.onUpdateUser('Doremon');
+  onUpdateUser(event) {
+    this.props.onUpdateUser(event.target.value);
   }
 
   render() {
+    console.log(this.props)
+
     return (
       <div className="App">
-
-        <div onClick={this.onUpdateUser}>Update User</div>
-        {this.props.user}
+        <input onChange={this.onUpdateUser} />
+        <br/>
+        {this.props.user} 
       </div>
     );
   }
 }
 
 // mapStateToProps receives the state of the store
-const mapStateToProps = state => ({
-  products: state.products,
-  user: state.user
-});
+// Using passed props by passing props as second argument
+const mapStateToProps = (state, props) => {
+  return {
+    products: state.products,
+    user: state.user,
+    customProp: `${state.user} ${props.someProp}`
+  }
+};
 
 // mapActionsToProps
 const mapActionsToProps = {

@@ -46,5 +46,6 @@ console.log(store.getState());
 // store.dispatch(updateUserAction);
 
 // wrap App component with Provider
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+// passing in someProp
+ReactDOM.render(<Provider store={store}><App someProp="Banzai"/></Provider>, document.getElementById('root'));
 registerServiceWorker();
