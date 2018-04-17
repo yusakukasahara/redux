@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 
+// for action binding
+import { bindActionCreators } from 'redux';
+
 // import connect from react-redux to app to redux store
 import { connect } from 'react-redux';
 import { updateUser } from './actions/user-actions';
@@ -17,7 +20,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
 
     return (
       <div className="App">
@@ -40,8 +42,17 @@ const mapStateToProps = (state, props) => {
 };
 
 // mapActionsToProps
-const mapActionsToProps = {
-  onUpdateUser: updateUser
+// can also be a function with dispatch and props as arguments
+// const mapActionsToProps = {
+//   onUpdateUser: updateUser
+// };
+
+const mapActionsToProps = (dispatch, props) => {
+  return bindActionCreators({
+    onUpdateUser: updateUser
+  },
+    dispatch
+  )
 };
 
 // connecting app to redux store, connect takes in three arguments
