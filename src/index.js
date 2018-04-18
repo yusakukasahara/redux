@@ -9,7 +9,8 @@ import productsReducer from './reducers/products-reducer';
 import userReducer from './reducers/user-reducer';
 
 // import createStore and combineReducers from redux
-import { combineReducers, createStore } from 'redux';
+// import applyMiddleware and compose
+import { applyMiddleware, compose, combineReducers, createStore } from 'redux';
 
 // import Provider to give app access to the store
 import { Provider } from 'react-redux';
@@ -20,15 +21,20 @@ const allReducers = combineReducers({
   user: userReducer
 });
 
-// instantiate a new store with all reducers, default product iphone and user Yusaku, and devTools extension check/call
+const allStoreEnhancers = compose(
+
+  // checks for redux devtools extension and calls if so
+  window.devToolsExtension && window.devToolsExtension()
+);
+
+// instantiate a new store with all reducers, default product iphone and user Yusaku, allStoreEnchancers (containing devTools extension check and call)
 const store = createStore(
   allReducers, 
   {
   products: [{ name: 'iPhone' }],
   user: 'Yusaku'
   },
-  // checks for redux devtools extension and calls if so
-  window.devToolsExtension && window.devToolsExtension()
+  allStoreEnhancers
 );
 
 // logs current state of store
